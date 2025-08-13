@@ -1,0 +1,89 @@
+{
+  "creation_date": "2025-08-13T09:32:28.178395",
+  "dashboard_available": true,
+  "data_source": "yfinance",
+  "data_quality": {
+    "records": 1006,
+    "date_range": {
+      "start": "2020-01-02T00:00:00",
+      "end": "2023-12-29T00:00:00"
+    },
+    "completeness": "High"
+  },
+  "dashboard_features": {
+    "interactive_charts": [
+      "Candlestick chart con indicadores técnicos",
+      "Análisis RSI con niveles de sobrecompra/sobreventa",
+      "MACD con histograma y línea de señal",
+      "Gráficos de volumen interactivos",
+      "Bollinger Bands dinámicas"
+    ],
+    "controls": [
+      "Selector de rango de fechas",
+      "Toggle de indicadores técnicos",
+      "Filtros interactivos por período"
+    ],
+    "kpi_metrics": [
+      "Precio actual en tiempo real",
+      "Cambio diario porcentual",
+      "Volumen de trading",
+      "RSI actual",
+      "Volatilidad histórica",
+      "Fuente de datos"
+    ],
+    "analysis_sections": [
+      "Rendimiento por múltiples períodos",
+      "Análisis de volatilidad histórica",
+      "Comparación con competidores EV",
+      "Timeline de eventos importantes",
+      "Estadísticas descriptivas clave"
+    ]
+  },
+  "technical_indicators": {
+    "trend_following": [
+      "SMA 20",
+      "SMA 50",
+      "SMA 200",
+      "EMA 12/26"
+    ],
+    "momentum": [
+      "RSI",
+      "MACD",
+      "MACD Signal",
+      "MACD Histogram"
+    ],
+    "volatility": [
+      "Bollinger Bands",
+      "Historical Volatility"
+    ],
+    "volume": [
+      "Volume bars",
+      "Volume SMA",
+      "Volume Ratio"
+    ]
+  },
+  "performance_metrics": {
+    "current_price": 248.47999572753906,
+    "daily_change": -1.8563856087399966,
+    "avg_volume": 133226380,
+    "volatility": 63.270595288378054,
+    "price_range": {
+      "min": 24.08133316040039,
+      "max": 409.9700012207031
+    }
+  },
+  "business_insights": {
+    "trend_analysis": "Dashboard permite identificar tendencias alcistas/bajistas usando múltiples timeframes",
+    "volatility_monitoring": "Seguimiento en tiempo real de volatilidad para gestión de riesgo",
+    "momentum_signals": "RSI y MACD proporcionan señales de entrada/salida",
+    "competitive_context": "Comparación con competidores EV para contexto de mercado",
+    "event_correlation": "Análisis de impacto de eventos corporativos en precio"
+  },
+  "technical_achievements": {
+    "responsive_design": "Dashboard adaptativo con Bootstrap",
+    "real_time_updates": "Callbacks de Dash para interactividad",
+    "fallback_system": "Dashboard estático cuando Dash no disponible",
+    "robust_data_loading": "Sistema de 3 niveles de carga de datos",
+    "professional_styling": "UI/UX profesional con componentes DBC"
+  }
+}

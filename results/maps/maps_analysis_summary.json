@@ -1,0 +1,108 @@
+{
+  "analysis_date": "2025-08-13T08:42:15.035001",
+  "total_maps_created": 3,
+  "folium_available": true,
+  "data_source": "yfinance",
+  "maps_overview": {
+    "facilities_map": {
+      "title": "Instalaciones Globales Tesla y Impacto de Mercado",
+      "file": "tesla_facilities_map.html",
+      "description": "Mapa interactivo mostrando instalaciones Tesla mundiales con puntuación de impacto",
+      "key_insights": [
+        "Total de instalaciones mapeadas: 12",
+        "Gigafactories muestran las puntuaciones de impacto más altas",
+        "Distribución global estratégica a través de mercados clave",
+        "Inversión total estimada: $52+ mil millones",
+        "Empleos totales: 146,500+"
+      ],
+      "technical_features": [
+        "Marcadores escalados por puntuación de impacto",
+        "Codificación por colores por categoría de instalación",
+        "Popups detallados con métricas de inversión",
+        "Etiquetas de año de apertura"
+      ]
+    },
+    "regional_sales_map": {
+      "title": "Rendimiento de Ventas Regionales Tesla (2020-2023)",
+      "file": "tesla_regional_sales_map.html",
+      "description": "Mapa de burbujas mostrando rendimiento de ventas y crecimiento por región",
+      "key_insights": [
+        "Total de regiones analizadas: 5",
+        "Región de mayor crecimiento: Otros Mercados (65.0%)",
+        "Ventas globales totales: 4,425,000 vehículos",
+        "Ingresos estimados totales: $199.1 mil millones",
+        "Red Supercharger global: 4,150 ubicaciones"
+      ],
+      "technical_features": [
+        "Burbujas escaladas por volumen total de ventas",
+        "Codificación por colores por tasa de crecimiento",
+        "Análisis comparativo de competidores",
+        "Métricas de PIB per cápita y población"
+      ]
+    },
+    "supercharger_map": {
+      "title": "Expansión Global de Red Supercharger Tesla",
+      "file": "tesla_supercharger_network_map.html",
+      "description": "Visualización de expansión de infraestructura de carga con timeline",
+      "key_insights": [
+        "Ubicaciones Supercharger mapeadas: 23",
+        "Total de stalls de carga: 236",
+        "Potencia total de red: 35.9 MW",
+        "Red iniciada en: 2012",
+        "Regiones cubiertas: 16"
+      ],
+      "technical_features": [
+        "Timeline de colores por año de apertura",
+        "Conexiones de red entre corredores principales",
+        "Métricas de potencia de carga por ubicación",
+        "Análisis de cobertura geográfica"
+      ]
+    }
+  },
+  "key_geographic_insights": {
+    "global_expansion": "Instalaciones Tesla posicionadas estratégicamente en principales regiones económicas",
+    "market_penetration": "Penetración más alta en mercados tech-forward (Área de la Bahía, Noruega, Países Bajos)",
+    "infrastructure_correlation": "Expansión de red Supercharger correlaciona con penetración de mercado",
+    "regional_growth": "Asia Pacífico muestra tasas de crecimiento más altas pese a menor penetración actual",
+    "competitive_position": "Fuerte en América del Norte y Europa, desafiado en Asia (especialmente China)",
+    "investment_pattern": "Inversiones masivas preceden expansiones de mercado significativas"
+  },
+  "business_implications": {
+    "investment_priorities": "Continuar expansión geográfica en regiones de alto crecimiento",
+    "competitive_strategy": "Fortalecer posición en mercados desafiados (China, Corea del Sur)",
+    "infrastructure_development": "Acelerar red Supercharger en mercados emergentes",
+    "market_entry": "Enfocarse en mercados con políticas favorables para VE",
+    "facility_planning": "Nuevas instalaciones de manufactura muestran fuerte recepción bursátil"
+  },
+  "technical_achievements": {
+    "visualization_techniques": [
+      "Clustering interactivo de marcadores",
+      "Overlays de mapas de calor",
+      "Análisis de correlación temporal",
+      "Escalado de gráficos de burbuja",
+      "Categorización codificada por colores",
+      "Diseño de popup personalizado",
+      "Visualización de conectividad de red"
+    ],
+    "data_integration": [
+      "Datos de ubicación de instalaciones",
+      "Rendimiento de ventas regionales",
+      "Métricas de red de infraestructura",
+      "Análisis de mercado competitivo",
+      "Correlación de precios de acciones",
+      "Timeline de hitos de expansión"
+    ],
+    "fallback_systems": [
+      "Sistema de carga de datos de 3 niveles",
+      "Visualizaciones estáticas alternativas cuando Folium no está disponible",
+      "Generación de datos sintéticos para demostración",
+      "Manejo robusto de errores y degradación elegante"
+    ]
+  },
+  "data_quality_metrics": {
+    "completeness": "Alto - Todas las regiones principales cubiertas",
+    "accuracy": "Verificado contra fuentes públicas de Tesla - Fuente: yfinance",
+    "timeliness": "Actualizado hasta 2023, incluye instalaciones más recientes",
+    "consistency": "Formato estandarizado a través de todos los conjuntos de datos"
+  }
+}

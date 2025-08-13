@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_a00a1886035d6aeb418a0d55a694d7f9 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+    <div style="position: fixed; 
+                bottom: 50px; right: 10px; width: 250px; height: 180px; 
+                background-color: rgba(255,255,255,0.95); border:2px solid grey; z-index:9999; 
+                font-size:12px; padding: 15px; border-radius: 5px;">
+    <h4 style="margin-top: 0;">Leyenda de Rendimiento Regional</h4>
+    <p><b>Tamaño de Burbuja:</b> Volumen Total de Ventas</p>
+    <p><b>Color por Tasa de Crecimiento:</b></p>
+    <p><span style="color:#d62728; font-size: 16px;">●</span> Alto (≥50%)</p>
+    <p><span style="color:#ff7f0e; font-size: 16px;">●</span> Moderado (30-50%)</p>
+    <p><span style="color:#2ca02c; font-size: 16px;">●</span> Bajo (20-30%)</p>
+    <p><span style="color:#1f77b4; font-size: 16px;">●</span> Muy Bajo (<20%)</p>
+    </div>
+    
+    
+    <h3 align="center" style="font-size:22px; margin-bottom: 0;"><b>Rendimiento de Ventas Regionales Tesla (2020-2023)</b></h3>
+    
+    
+            <div class="folium-map" id="map_a00a1886035d6aeb418a0d55a694d7f9" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_a00a1886035d6aeb418a0d55a694d7f9 = L.map(
+                "map_a00a1886035d6aeb418a0d55a694d7f9",
+                {
+                    center: [30.0, 0.0],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 2,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_a14ed51911717c4d3ae7df6ec3be6654 = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_a14ed51911717c4d3ae7df6ec3be6654.addTo(map_a00a1886035d6aeb418a0d55a694d7f9);
+        
+    
+            var circle_marker_2f130bb23f0867334b538000f1963fe4 = L.circleMarker(
+                [45.0, -100.0],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ca02c", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 75.0, "stroke": true, "weight": 2}
+            ).addTo(map_a00a1886035d6aeb418a0d55a694d7f9);
+        
+    
+        var popup_81a139a320f0c8668bdbe83bacd42410 = L.popup({
+  "maxWidth": 400,
+});
+
+        
+            
+                var html_1cc1f5340da32b944002aa20ce1c4967 = $(`<div id="html_1cc1f5340da32b944002aa20ce1c4967" style="width: 100.0%; height: 100.0%;">         <div style="width: 350px;">             <h4 style="color: #1f77b4; margin-bottom: 10px;">Rendimiento de Mercado - América del Norte</h4>             <table style="width: 100%; font-size: 12px;">                 <tr><td><b>Ventas Totales (2020-2023):</b></td><td style="color: #d62728; font-weight: bold;">1,602,000 vehículos</td></tr>                 <tr><td><b>Ventas 2023:</b></td><td>580,000</td></tr>                 <tr><td><b>Participación de Mercado:</b></td><td>18.0%</td></tr>                 <tr><td><b>Tasa de Crecimiento:</b></td><td style="color: #d62728;">28.0%</td></tr>                 <tr><td><b>Crecimiento Reciente:</b></td><td>36.5%</td></tr>                 <tr><td><b>Superchargers:</b></td><td>1,800</td></tr>                 <tr><td><b>Población:</b></td><td>579M habitantes</td></tr>                 <tr><td><b>PIB per cápita:</b></td><td>$65,000</td></tr>                 <tr><td><b>Incentivos EV:</b></td><td>Si</td></tr>                 <tr><td><b>Competidores:</b></td><td>Ford, GM, Rivian</td></tr>                 <tr><td><b>Ingresos Estimados:</b></td><td>$72.1B</td></tr>             </table>         </div>         </div>`)[0];
+                popup_81a139a320f0c8668bdbe83bacd42410.setContent(html_1cc1f5340da32b944002aa20ce1c4967);
+            
+        
+
+        circle_marker_2f130bb23f0867334b538000f1963fe4.bindPopup(popup_81a139a320f0c8668bdbe83bacd42410)
+        ;
+
+        
+    
+    
+            circle_marker_2f130bb23f0867334b538000f1963fe4.bindTooltip(
+                `<div>
+                     América del Norte: 1,602,000 ventas totales
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_d49c7a31bf0d396348ca6e5fc1468625 = L.marker(
+                [53.0, -100.0],
+                {
+}
+            ).addTo(map_a00a1886035d6aeb418a0d55a694d7f9);
+        
+    
+            var div_icon_b9467ad3079e8ea030af7e2f1ebae4a9 = L.divIcon({
+  "html": "\u003cdiv style=\"font-size: 13px; font-weight: bold; color: black; background-color: rgba(255,255,255,0.8); padding: 3px 6px; border-radius: 3px; border: 1px solid gray;\"\u003eAm\u00e9rica del Norte\u003c/div\u003e",
+  "iconSize": [120, 20],
+  "iconAnchor": [60, 10],
+  "className": "empty",
+});
+        
+    
+                marker_d49c7a31bf0d396348ca6e5fc1468625.setIcon(div_icon_b9467ad3079e8ea030af7e2f1ebae4a9);
+            
+    
+            var circle_marker_492b71f1ec803d790c46eafb455ae0c9 = L.circleMarker(
+                [54.0, 15.0],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff7f0e", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 49.38202247191011, "stroke": true, "weight": 2}
+            ).addTo(map_a00a1886035d6aeb418a0d55a694d7f9);
+        
+    
+        var popup_c8e5d5744a0b8e196c86d81b9d9361a3 = L.popup({
+  "maxWidth": 400,
+});
+
+        
+            
+                var html_2c23dec4c2fa06e55ce273ad6469e478 = $(`<div id="html_2c23dec4c2fa06e55ce273ad6469e478" style="width: 100.0%; height: 100.0%;">         <div style="width: 350px;">             <h4 style="color: #1f77b4; margin-bottom: 10px;">Rendimiento de Mercado - Europa</h4>             <table style="width: 100%; font-size: 12px;">                 <tr><td><b>Ventas Totales (2020-2023):</b></td><td style="color: #d62728; font-weight: bold;">918,000 vehículos</td></tr>                 <tr><td><b>Ventas 2023:</b></td><td>380,000</td></tr>                 <tr><td><b>Participación de Mercado:</b></td><td>12.0%</td></tr>                 <tr><td><b>Tasa de Crecimiento:</b></td><td style="color: #d62728;">42.0%</td></tr>                 <tr><td><b>Crecimiento Reciente:</b></td><td>49.6%</td></tr>                 <tr><td><b>Superchargers:</b></td><td>1,200</td></tr>                 <tr><td><b>Población:</b></td><td>746M habitantes</td></tr>                 <tr><td><b>PIB per cápita:</b></td><td>$47,000</td></tr>                 <tr><td><b>Incentivos EV:</b></td><td>Si</td></tr>                 <tr><td><b>Competidores:</b></td><td>VW, BMW, Mercedes</td></tr>                 <tr><td><b>Ingresos Estimados:</b></td><td>$41.3B</td></tr>             </table>         </div>         </div>`)[0];
+                popup_c8e5d5744a0b8e196c86d81b9d9361a3.setContent(html_2c23dec4c2fa06e55ce273ad6469e478);
+            
+        
+
+        circle_marker_492b71f1ec803d790c46eafb455ae0c9.bindPopup(popup_c8e5d5744a0b8e196c86d81b9d9361a3)
+        ;
+
+        
+    
+    
+            circle_marker_492b71f1ec803d790c46eafb455ae0c9.bindTooltip(
+                `<div>
+                     Europa: 918,000 ventas totales
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_e241a954a341748f9a4b5f6da775ced7 = L.marker(
+                [62.0, 15.0],
+                {
+}
+            ).addTo(map_a00a1886035d6aeb418a0d55a694d7f9);
+        
+    
+            var div_icon_fc237058952c44e4dfd23b79523e675d = L.divIcon({
+  "html": "\u003cdiv style=\"font-size: 13px; font-weight: bold; color: black; background-color: rgba(255,255,255,0.8); padding: 3px 6px; border-radius: 3px; border: 1px solid gray;\"\u003eEuropa\u003c/div\u003e",
+  "iconSize": [120, 20],
+  "iconAnchor": [60, 10],
+  "className": "empty",
+});
+        
+    
+                marker_e241a954a341748f9a4b5f6da775ced7.setIcon(div_icon_fc237058952c44e4dfd23b79523e675d);
+            
+    
+            var circle_marker_f045514a173f1676e6993ee5f17c99c5 = L.circleMarker(
+                [35.0, 105.0],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff7f0e", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 70.8052434456929, "stroke": true, "weight": 2}
+            ).addTo(map_a00a1886035d6aeb418a0d55a694d7f9);
+        
+    
+        var popup_5a9882e90bcde98fc451465d80d0c224 = L.popup({
+  "maxWidth": 400,
+});
+
+        
+            
+                var html_44dd24207a2f76f8bc90e1995c57f7d4 = $(`<div id="html_44dd24207a2f76f8bc90e1995c57f7d4" style="width: 100.0%; height: 100.0%;">         <div style="width: 350px;">             <h4 style="color: #1f77b4; margin-bottom: 10px;">Rendimiento de Mercado - China</h4>             <table style="width: 100%; font-size: 12px;">                 <tr><td><b>Ventas Totales (2020-2023):</b></td><td style="color: #d62728; font-weight: bold;">1,490,000 vehículos</td></tr>                 <tr><td><b>Ventas 2023:</b></td><td>590,000</td></tr>                 <tr><td><b>Participación de Mercado:</b></td><td>9.0%</td></tr>                 <tr><td><b>Tasa de Crecimiento:</b></td><td style="color: #d62728;">38.0%</td></tr>                 <tr><td><b>Crecimiento Reciente:</b></td><td>34.1%</td></tr>                 <tr><td><b>Superchargers:</b></td><td>800</td></tr>                 <tr><td><b>Población:</b></td><td>1400M habitantes</td></tr>                 <tr><td><b>PIB per cápita:</b></td><td>$12,500</td></tr>                 <tr><td><b>Incentivos EV:</b></td><td>Si</td></tr>                 <tr><td><b>Competidores:</b></td><td>BYD, NIO, XPeng</td></tr>                 <tr><td><b>Ingresos Estimados:</b></td><td>$67.0B</td></tr>             </table>         </div>         </div>`)[0];
+                popup_5a9882e90bcde98fc451465d80d0c224.setContent(html_44dd24207a2f76f8bc90e1995c57f7d4);
+            
+        
+
+        circle_marker_f045514a173f1676e6993ee5f17c99c5.bindPopup(popup_5a9882e90bcde98fc451465d80d0c224)
+        ;
+
+        
+    
+    
+            circle_marker_f045514a173f1676e6993ee5f17c99c5.bindTooltip(
+                `<div>
+                     China: 1,490,000 ventas totales
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_04a12b598fd36c292040f4ae56d988c9 = L.marker(
+                [43.0, 105.0],
+                {
+}
+            ).addTo(map_a00a1886035d6aeb418a0d55a694d7f9);
+        
+    
+            var div_icon_1cb949be0aa16efe31b7043b580fa202 = L.divIcon({
+  "html": "\u003cdiv style=\"font-size: 13px; font-weight: bold; color: black; background-color: rgba(255,255,255,0.8); padding: 3px 6px; border-radius: 3px; border: 1px solid gray;\"\u003eChina\u003c/div\u003e",
+  "iconSize": [120, 20],
+  "iconAnchor": [60, 10],
+  "className": "empty",
+});
+        
+    
+                marker_04a12b598fd36c292040f4ae56d988c9.setIcon(div_icon_1cb949be0aa16efe31b7043b580fa202);
+            
+    
+            var circle_marker_90ae9ef47f94ae2a8a1f64fd2a67b072 = L.circleMarker(
+                [15.0, 120.0],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#d62728", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 25.337078651685395, "stroke": true, "weight": 2}
+            ).addTo(map_a00a1886035d6aeb418a0d55a694d7f9);
+        
+    
+        var popup_040cafd9cb899d8f71e409f1d6ce046a = L.popup({
+  "maxWidth": 400,
+});
+
+        
+            
+                var html_306ffaa5a5a867d5f9fdcda44726baf6 = $(`<div id="html_306ffaa5a5a867d5f9fdcda44726baf6" style="width: 100.0%; height: 100.0%;">         <div style="width: 350px;">             <h4 style="color: #1f77b4; margin-bottom: 10px;">Rendimiento de Mercado - Asia Pacífico</h4>             <table style="width: 100%; font-size: 12px;">                 <tr><td><b>Ventas Totales (2020-2023):</b></td><td style="color: #d62728; font-weight: bold;">276,000 vehículos</td></tr>                 <tr><td><b>Ventas 2023:</b></td><td>125,000</td></tr>                 <tr><td><b>Participación de Mercado:</b></td><td>5.0%</td></tr>                 <tr><td><b>Tasa de Crecimiento:</b></td><td style="color: #d62728;">55.0%</td></tr>                 <tr><td><b>Crecimiento Reciente:</b></td><td>60.3%</td></tr>                 <tr><td><b>Superchargers:</b></td><td>200</td></tr>                 <tr><td><b>Población:</b></td><td>4600M habitantes</td></tr>                 <tr><td><b>PIB per cápita:</b></td><td>$8,500</td></tr>                 <tr><td><b>Incentivos EV:</b></td><td>Parcial</td></tr>                 <tr><td><b>Competidores:</b></td><td>Toyota, Hyundai, Nissan</td></tr>                 <tr><td><b>Ingresos Estimados:</b></td><td>$12.4B</td></tr>             </table>         </div>         </div>`)[0];
+                popup_040cafd9cb899d8f71e409f1d6ce046a.setContent(html_306ffaa5a5a867d5f9fdcda44726baf6);
+            
+        
+
+        circle_marker_90ae9ef47f94ae2a8a1f64fd2a67b072.bindPopup(popup_040cafd9cb899d8f71e409f1d6ce046a)
+        ;
+
+        
+    
+    
+            circle_marker_90ae9ef47f94ae2a8a1f64fd2a67b072.bindTooltip(
+                `<div>
+                     Asia Pacífico: 276,000 ventas totales
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_bb00af1e4b6cc58d78b674aa1d7de3f5 = L.marker(
+                [23.0, 120.0],
+                {
+}
+            ).addTo(map_a00a1886035d6aeb418a0d55a694d7f9);
+        
+    
+            var div_icon_ce75f23ca45ca73ba9e4612622cbf67c = L.divIcon({
+  "html": "\u003cdiv style=\"font-size: 13px; font-weight: bold; color: black; background-color: rgba(255,255,255,0.8); padding: 3px 6px; border-radius: 3px; border: 1px solid gray;\"\u003eAsia Pac\u00edfico\u003c/div\u003e",
+  "iconSize": [120, 20],
+  "iconAnchor": [60, 10],
+  "className": "empty",
+});
+        
+    
+                marker_bb00af1e4b6cc58d78b674aa1d7de3f5.setIcon(div_icon_ce75f23ca45ca73ba9e4612622cbf67c);
+            
+    
+            var circle_marker_f5019fff89247a2d1603700f16031712 = L.circleMarker(
+                [-25.0, 135.0],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#d62728", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 20.205992509363295, "stroke": true, "weight": 2}
+            ).addTo(map_a00a1886035d6aeb418a0d55a694d7f9);
+        
+    
+        var popup_3a8bc51f3b7c0287feb00ae92ce97b4d = L.popup({
+  "maxWidth": 400,
+});
+
+        
+            
+                var html_bb55eff23e4947d5b97d3b9dfac74f56 = $(`<div id="html_bb55eff23e4947d5b97d3b9dfac74f56" style="width: 100.0%; height: 100.0%;">         <div style="width: 350px;">             <h4 style="color: #1f77b4; margin-bottom: 10px;">Rendimiento de Mercado - Otros Mercados</h4>             <table style="width: 100%; font-size: 12px;">                 <tr><td><b>Ventas Totales (2020-2023):</b></td><td style="color: #d62728; font-weight: bold;">139,000 vehículos</td></tr>                 <tr><td><b>Ventas 2023:</b></td><td>65,000</td></tr>                 <tr><td><b>Participación de Mercado:</b></td><td>3.0%</td></tr>                 <tr><td><b>Tasa de Crecimiento:</b></td><td style="color: #d62728;">65.0%</td></tr>                 <tr><td><b>Crecimiento Reciente:</b></td><td>71.1%</td></tr>                 <tr><td><b>Superchargers:</b></td><td>150</td></tr>                 <tr><td><b>Población:</b></td><td>1200M habitantes</td></tr>                 <tr><td><b>PIB per cápita:</b></td><td>$15,000</td></tr>                 <tr><td><b>Incentivos EV:</b></td><td>Limitado</td></tr>                 <tr><td><b>Competidores:</b></td><td>Varios locales</td></tr>                 <tr><td><b>Ingresos Estimados:</b></td><td>$6.3B</td></tr>             </table>         </div>         </div>`)[0];
+                popup_3a8bc51f3b7c0287feb00ae92ce97b4d.setContent(html_bb55eff23e4947d5b97d3b9dfac74f56);
+            
+        
+
+        circle_marker_f5019fff89247a2d1603700f16031712.bindPopup(popup_3a8bc51f3b7c0287feb00ae92ce97b4d)
+        ;
+
+        
+    
+    
+            circle_marker_f5019fff89247a2d1603700f16031712.bindTooltip(
+                `<div>
+                     Otros Mercados: 139,000 ventas totales
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_8355bb2ac3409c30387e169f1941ce20 = L.marker(
+                [-17.0, 135.0],
+                {
+}
+            ).addTo(map_a00a1886035d6aeb418a0d55a694d7f9);
+        
+    
+            var div_icon_35cd90a39f1d8fd2c750d11c2391efab = L.divIcon({
+  "html": "\u003cdiv style=\"font-size: 13px; font-weight: bold; color: black; background-color: rgba(255,255,255,0.8); padding: 3px 6px; border-radius: 3px; border: 1px solid gray;\"\u003eOtros Mercados\u003c/div\u003e",
+  "iconSize": [120, 20],
+  "iconAnchor": [60, 10],
+  "className": "empty",
+});
+        
+    
+                marker_8355bb2ac3409c30387e169f1941ce20.setIcon(div_icon_35cd90a39f1d8fd2c750d11c2391efab);
+            
+</script>
+</html>

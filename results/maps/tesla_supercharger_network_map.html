@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_b3fb3c883863f979ccd5c538b49938dc {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+    <div style="position: fixed; 
+                bottom: 50px; left: 10px; width: 220px; height: 240px; 
+                background-color: rgba(0,0,0,0.8); border:2px solid white; z-index:9999; 
+                font-size:12px; padding: 15px; color: white; border-radius: 5px;">
+    <h4 style="color: #ffffff; margin-top: 0;">Timeline Supercharger</h4>
+    <p><span style="color:#FF0000; font-size: 16px;">●</span> 2012 - Genesis</p>
+    <p><span style="color:#FF8000; font-size: 16px;">●</span> 2013 - Expansión Temprana</p>
+    <p><span style="color:#FFFF00; font-size: 16px;">●</span> 2014 - Lanzamiento Global</p>
+    <p><span style="color:#80FF00; font-size: 16px;">●</span> 2015+ - Crecimiento de Red</p>
+    <hr style="border-color: #666;">
+    <p><b>Tamaño Burbuja:</b> Número de Stalls</p>
+    <p><span style="color:cyan;">━━━</span> Corredores Principales</p>
+    <p><span style="color:lime;">━━━</span> Red Europea</p>
+    <p><span style="color:yellow;">━━━</span> Red China</p>
+    </div>
+    
+    
+    <h3 align="center" style="font-size:22px; color:white; margin-bottom: 0;"><b>Expansión Global de Red Supercharger Tesla</b></h3>
+    
+    
+            <div class="folium-map" id="map_b3fb3c883863f979ccd5c538b49938dc" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_b3fb3c883863f979ccd5c538b49938dc = L.map(
+                "map_b3fb3c883863f979ccd5c538b49938dc",
+                {
+                    center: [40.0, 0.0],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 2,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_356378ed5d34b94b03f73d329f7f3d18 = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_356378ed5d34b94b03f73d329f7f3d18.addTo(map_b3fb3c883863f979ccd5c538b49938dc);
+        
+    
+            var circle_marker_3c9faba79353b2444ced4d39f59d1c3a = L.circleMarker(
+                [34.0522, -118.2437],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FF0000", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 30.0, "stroke": true, "weight": 1}
+            ).addTo(map_b3fb3c883863f979ccd5c538b49938dc);
+        
+    
+        var popup_078316836b5e13c7f99d969053452429 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_38c532d07e3e6b0732c85b5a59cbb37d = $(`<div id="html_38c532d07e3e6b0732c85b5a59cbb37d" style="width: 100.0%; height: 100.0%;">         <div style="width: 280px;">             <h4 style="color: #ffffff; margin-bottom: 8px;">Los Angeles Supercharger Hub</h4>             <table style="width: 100%; color: #ffffff; font-size: 12px;">                 <tr><td><b>Región:</b></td><td>Costa Oeste</td></tr>                 <tr><td><b>Abierto:</b></td><td>September 2012</td></tr>                 <tr><td><b>Stalls de Carga:</b></td><td style="color: #00ff00;">20</td></tr>                 <tr><td><b>Potencia por Stall:</b></td><td>250 kW</td></tr>                 <tr><td><b>Potencia Total:</b></td><td style="color: #ffff00;">5,000 kW</td></tr>                 <tr><td><b>Fase de Red:</b></td><td>Red Temprana</td></tr>             </table>         </div>         </div>`)[0];
+                popup_078316836b5e13c7f99d969053452429.setContent(html_38c532d07e3e6b0732c85b5a59cbb37d);
+            
+        
+
+        circle_marker_3c9faba79353b2444ced4d39f59d1c3a.bindPopup(popup_078316836b5e13c7f99d969053452429)
+        ;
+
+        
+    
+    
+            circle_marker_3c9faba79353b2444ced4d39f59d1c3a.bindTooltip(
+                `<div>
+                     Los Angeles Supercharger Hub - 20 stalls
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_1378725f7a654e473cdf5be86ecc0694 = L.circleMarker(
+                [37.7749, -122.4194],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FF0000", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 25.2, "stroke": true, "weight": 1}
+            ).addTo(map_b3fb3c883863f979ccd5c538b49938dc);
+        
+    
+        var popup_e2642089e28a228bc94aca6c81d040f5 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_0e4547685604892d4d5bb98a4b47448b = $(`<div id="html_0e4547685604892d4d5bb98a4b47448b" style="width: 100.0%; height: 100.0%;">         <div style="width: 280px;">             <h4 style="color: #ffffff; margin-bottom: 8px;">San Francisco Bay Area Hub</h4>             <table style="width: 100%; color: #ffffff; font-size: 12px;">                 <tr><td><b>Región:</b></td><td>Costa Oeste</td></tr>                 <tr><td><b>Abierto:</b></td><td>October 2012</td></tr>                 <tr><td><b>Stalls de Carga:</b></td><td style="color: #00ff00;">16</td></tr>                 <tr><td><b>Potencia por Stall:</b></td><td>150 kW</td></tr>                 <tr><td><b>Potencia Total:</b></td><td style="color: #ffff00;">2,400 kW</td></tr>                 <tr><td><b>Fase de Red:</b></td><td>Red Temprana</td></tr>             </table>         </div>         </div>`)[0];
+                popup_e2642089e28a228bc94aca6c81d040f5.setContent(html_0e4547685604892d4d5bb98a4b47448b);
+            
+        
+
+        circle_marker_1378725f7a654e473cdf5be86ecc0694.bindPopup(popup_e2642089e28a228bc94aca6c81d040f5)
+        ;
+
+        
+    
+    
+            circle_marker_1378725f7a654e473cdf5be86ecc0694.bindTooltip(
+                `<div>
+                     San Francisco Bay Area Hub - 16 stalls
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_60e548cd7b1d2fcac6d93855963778c4 = L.circleMarker(
+                [40.7128, -74.006],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FF8000", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 20.4, "stroke": true, "weight": 1}
+            ).addTo(map_b3fb3c883863f979ccd5c538b49938dc);
+        
+    
+        var popup_a3b897d65ac2cd847d32378cc429d974 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_abc799e4345aebefd72a97ee57972d45 = $(`<div id="html_abc799e4345aebefd72a97ee57972d45" style="width: 100.0%; height: 100.0%;">         <div style="width: 280px;">             <h4 style="color: #ffffff; margin-bottom: 8px;">New York Metro Hub</h4>             <table style="width: 100%; color: #ffffff; font-size: 12px;">                 <tr><td><b>Región:</b></td><td>Costa Este</td></tr>                 <tr><td><b>Abierto:</b></td><td>June 2013</td></tr>                 <tr><td><b>Stalls de Carga:</b></td><td style="color: #00ff00;">12</td></tr>                 <tr><td><b>Potencia por Stall:</b></td><td>150 kW</td></tr>                 <tr><td><b>Potencia Total:</b></td><td style="color: #ffff00;">1,800 kW</td></tr>                 <tr><td><b>Fase de Red:</b></td><td>Red Temprana</td></tr>             </table>         </div>         </div>`)[0];
+                popup_a3b897d65ac2cd847d32378cc429d974.setContent(html_abc799e4345aebefd72a97ee57972d45);
+            
+        
+
+        circle_marker_60e548cd7b1d2fcac6d93855963778c4.bindPopup(popup_a3b897d65ac2cd847d32378cc429d974)
+        ;
+
+        
+    
+    
+            circle_marker_60e548cd7b1d2fcac6d93855963778c4.bindTooltip(
+                `<div>
+                     New York Metro Hub - 12 stalls
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_4ae24af7c86ef61e92a2cf59dd168b54 = L.circleMarker(
+                [41.8781, -87.6298],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FF8000", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 22.8, "stroke": true, "weight": 1}
+            ).addTo(map_b3fb3c883863f979ccd5c538b49938dc);
+        
+    
+        var popup_9b9ba66fc06fc0b01eecf4a625f56b17 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_6bf610de7508001692a46abeeb603eec = $(`<div id="html_6bf610de7508001692a46abeeb603eec" style="width: 100.0%; height: 100.0%;">         <div style="width: 280px;">             <h4 style="color: #ffffff; margin-bottom: 8px;">Chicago Hub</h4>             <table style="width: 100%; color: #ffffff; font-size: 12px;">                 <tr><td><b>Región:</b></td><td>Medio Oeste</td></tr>                 <tr><td><b>Abierto:</b></td><td>August 2013</td></tr>                 <tr><td><b>Stalls de Carga:</b></td><td style="color: #00ff00;">14</td></tr>                 <tr><td><b>Potencia por Stall:</b></td><td>150 kW</td></tr>                 <tr><td><b>Potencia Total:</b></td><td style="color: #ffff00;">2,100 kW</td></tr>                 <tr><td><b>Fase de Red:</b></td><td>Red Temprana</td></tr>             </table>         </div>         </div>`)[0];
+                popup_9b9ba66fc06fc0b01eecf4a625f56b17.setContent(html_6bf610de7508001692a46abeeb603eec);
+            
+        
+
+        circle_marker_4ae24af7c86ef61e92a2cf59dd168b54.bindPopup(popup_9b9ba66fc06fc0b01eecf4a625f56b17)
+        ;
+
+        
+    
+    
+            circle_marker_4ae24af7c86ef61e92a2cf59dd168b54.bindTooltip(
+                `<div>
+                     Chicago Hub - 14 stalls
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_6673096073073ea69d634f321af1125e = L.circleMarker(
+                [25.7617, -80.1918],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FFFF00", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 18.0, "stroke": true, "weight": 1}
+            ).addTo(map_b3fb3c883863f979ccd5c538b49938dc);
+        
+    
+        var popup_c9502796567eaa85b666f843af7358a4 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_847bc64d46d89f5dd861ee91bcac87f1 = $(`<div id="html_847bc64d46d89f5dd861ee91bcac87f1" style="width: 100.0%; height: 100.0%;">         <div style="width: 280px;">             <h4 style="color: #ffffff; margin-bottom: 8px;">Miami Hub</h4>             <table style="width: 100%; color: #ffffff; font-size: 12px;">                 <tr><td><b>Región:</b></td><td>Sureste</td></tr>                 <tr><td><b>Abierto:</b></td><td>March 2014</td></tr>                 <tr><td><b>Stalls de Carga:</b></td><td style="color: #00ff00;">10</td></tr>                 <tr><td><b>Potencia por Stall:</b></td><td>120 kW</td></tr>                 <tr><td><b>Potencia Total:</b></td><td style="color: #ffff00;">1,200 kW</td></tr>                 <tr><td><b>Fase de Red:</b></td><td>Fase de Expansión</td></tr>             </table>         </div>         </div>`)[0];
+                popup_c9502796567eaa85b666f843af7358a4.setContent(html_847bc64d46d89f5dd861ee91bcac87f1);
+            
+        
+
+        circle_marker_6673096073073ea69d634f321af1125e.bindPopup(popup_c9502796567eaa85b666f843af7358a4)
+        ;
+
+        
+    
+    
+            circle_marker_6673096073073ea69d634f321af1125e.bindTooltip(
+                `<div>
+                     Miami Hub - 10 stalls
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_39ede3eb4e54cf16a184347eea48567e = L.circleMarker(
+                [32.7767, -96.797],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FFFF00", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 27.599999999999998, "stroke": true, "weight": 1}
+            ).addTo(map_b3fb3c883863f979ccd5c538b49938dc);
+        
+    
+        var popup_0b3bbfe92a21b4252d50e48612b6b6c2 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_78bb79a1014151af183f700dc2b755df = $(`<div id="html_78bb79a1014151af183f700dc2b755df" style="width: 100.0%; height: 100.0%;">         <div style="width: 280px;">             <h4 style="color: #ffffff; margin-bottom: 8px;">Dallas Hub</h4>             <table style="width: 100%; color: #ffffff; font-size: 12px;">                 <tr><td><b>Región:</b></td><td>Sur</td></tr>                 <tr><td><b>Abierto:</b></td><td>July 2014</td></tr>                 <tr><td><b>Stalls de Carga:</b></td><td style="color: #00ff00;">18</td></tr>                 <tr><td><b>Potencia por Stall:</b></td><td>150 kW</td></tr>                 <tr><td><b>Potencia Total:</b></td><td style="color: #ffff00;">2,700 kW</td></tr>                 <tr><td><b>Fase de Red:</b></td><td>Fase de Expansión</td></tr>             </table>         </div>         </div>`)[0];
+                popup_0b3bbfe92a21b4252d50e48612b6b6c2.setContent(html_78bb79a1014151af183f700dc2b755df);
+            
+        
+
+        circle_marker_39ede3eb4e54cf16a184347eea48567e.bindPopup(popup_0b3bbfe92a21b4252d50e48612b6b6c2)
+        ;
+
+        
+    
+    
+            circle_marker_39ede3eb4e54cf16a184347eea48567e.bindTooltip(
+                `<div>
+                     Dallas Hub - 18 stalls
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_4965ef948f4978ba65f09eef68e4aa38 = L.circleMarker(
+                [47.6062, -122.3321],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FF8000", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15.6, "stroke": true, "weight": 1}
+            ).addTo(map_b3fb3c883863f979ccd5c538b49938dc);
+        
+    
+        var popup_bf152fc16dadd14cdaaacb7544ca1178 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_2bf70e7941d9c8238d81075c73e6b1ce = $(`<div id="html_2bf70e7941d9c8238d81075c73e6b1ce" style="width: 100.0%; height: 100.0%;">         <div style="width: 280px;">             <h4 style="color: #ffffff; margin-bottom: 8px;">Seattle Hub</h4>             <table style="width: 100%; color: #ffffff; font-size: 12px;">                 <tr><td><b>Región:</b></td><td>Pacífico Noroeste</td></tr>                 <tr><td><b>Abierto:</b></td><td>December 2013</td></tr>                 <tr><td><b>Stalls de Carga:</b></td><td style="color: #00ff00;">8</td></tr>                 <tr><td><b>Potencia por Stall:</b></td><td>120 kW</td></tr>                 <tr><td><b>Potencia Total:</b></td><td style="color: #ffff00;">960 kW</td></tr>                 <tr><td><b>Fase de Red:</b></td><td>Red Temprana</td></tr>             </table>         </div>         </div>`)[0];
+                popup_bf152fc16dadd14cdaaacb7544ca1178.setContent(html_2bf70e7941d9c8238d81075c73e6b1ce);
+            
+        
+
+        circle_marker_4965ef948f4978ba65f09eef68e4aa38.bindPopup(popup_bf152fc16dadd14cdaaacb7544ca1178)
+        ;
+
+        
+    
+    
+            circle_marker_4965ef948f4978ba65f09eef68e4aa38.bindTooltip(
+                `<div>
+                     Seattle Hub - 8 stalls
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_13abc9735a48abf0ba5198b74a3bf94f = L.circleMarker(
+                [59.9139, 10.7522],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FF8000", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 13.2, "stroke": true, "weight": 1}
+            ).addTo(map_b3fb3c883863f979ccd5c538b49938dc);
+        
+    
+        var popup_e9dd91f5ff843e8213a21b5bac3b5b46 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_fbbe2d59785665cabe2e21b950c79a70 = $(`<div id="html_fbbe2d59785665cabe2e21b950c79a70" style="width: 100.0%; height: 100.0%;">         <div style="width: 280px;">             <h4 style="color: #ffffff; margin-bottom: 8px;">Oslo Supercharger</h4>             <table style="width: 100%; color: #ffffff; font-size: 12px;">                 <tr><td><b>Región:</b></td><td>Europa Norte</td></tr>                 <tr><td><b>Abierto:</b></td><td>September 2013</td></tr>                 <tr><td><b>Stalls de Carga:</b></td><td style="color: #00ff00;">6</td></tr>                 <tr><td><b>Potencia por Stall:</b></td><td>120 kW</td></tr>                 <tr><td><b>Potencia Total:</b></td><td style="color: #ffff00;">720 kW</td></tr>                 <tr><td><b>Fase de Red:</b></td><td>Red Temprana</td></tr>             </table>         </div>         </div>`)[0];
+                popup_e9dd91f5ff843e8213a21b5bac3b5b46.setContent(html_fbbe2d59785665cabe2e21b950c79a70);
+            
+        
+
+        circle_marker_13abc9735a48abf0ba5198b74a3bf94f.bindPopup(popup_e9dd91f5ff843e8213a21b5bac3b5b46)
+        ;
+
+        
+    
+    
+            circle_marker_13abc9735a48abf0ba5198b74a3bf94f.bindTooltip(
+                `<div>
+                     Oslo Supercharger - 6 stalls
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_ae6ad691db4f699145c35b5c427b782b = L.circleMarker(
+                [52.3676, 4.9041],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FFFF00", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15.6, "stroke": true, "weight": 1}
+            ).addTo(map_b3fb3c883863f979ccd5c538b49938dc);
+        
+    
+        var popup_e42299b9da5fbe766e4d44366a0f60b2 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_ddd677cc786fbdff09f819adb55fd3c5 = $(`<div id="html_ddd677cc786fbdff09f819adb55fd3c5" style="width: 100.0%; height: 100.0%;">         <div style="width: 280px;">             <h4 style="color: #ffffff; margin-bottom: 8px;">Amsterdam Hub</h4>             <table style="width: 100%; color: #ffffff; font-size: 12px;">                 <tr><td><b>Región:</b></td><td>Europa Oeste</td></tr>                 <tr><td><b>Abierto:</b></td><td>February 2014</td></tr>                 <tr><td><b>Stalls de Carga:</b></td><td style="color: #00ff00;">8</td></tr>                 <tr><td><b>Potencia por Stall:</b></td><td>150 kW</td></tr>                 <tr><td><b>Potencia Total:</b></td><td style="color: #ffff00;">1,200 kW</td></tr>                 <tr><td><b>Fase de Red:</b></td><td>Fase de Expansión</td></tr>             </table>         </div>         </div>`)[0];
+                popup_e42299b9da5fbe766e4d44366a0f60b2.setContent(html_ddd677cc786fbdff09f819adb55fd3c5);
+            
+        
+
+        circle_marker_ae6ad691db4f699145c35b5c427b782b.bindPopup(popup_e42299b9da5fbe766e4d44366a0f60b2)
+        ;
+
+        
+    
+    
+            circle_marker_ae6ad691db4f699145c35b5c427b782b.bindTooltip(
+                `<div>
+                     Amsterdam Hub - 8 stalls
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_a13a20e197c88a98f7e4a968a856d52e = L.circleMarker(
+                [52.52, 13.405],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FFFF00", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 18.0, "stroke": true, "weight": 1}
+            ).addTo(map_b3fb3c883863f979ccd5c538b49938dc);
+        
+    
+        var popup_ba5b16ef84f7d3583b544a57ee957cd5 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_06f89c10acee173b977c0f95bdc8872f = $(`<div id="html_06f89c10acee173b977c0f95bdc8872f" style="width: 100.0%; height: 100.0%;">         <div style="width: 280px;">             <h4 style="color: #ffffff; margin-bottom: 8px;">Berlin Hub</h4>             <table style="width: 100%; color: #ffffff; font-size: 12px;">                 <tr><td><b>Región:</b></td><td>Europa Central</td></tr>                 <tr><td><b>Abierto:</b></td><td>April 2014</td></tr>                 <tr><td><b>Stalls de Carga:</b></td><td style="color: #00ff00;">10</td></tr>                 <tr><td><b>Potencia por Stall:</b></td><td>150 kW</td></tr>                 <tr><td><b>Potencia Total:</b></td><td style="color: #ffff00;">1,500 kW</td></tr>                 <tr><td><b>Fase de Red:</b></td><td>Fase de Expansión</td></tr>             </table>         </div>         </div>`)[0];
+                popup_ba5b16ef84f7d3583b544a57ee957cd5.setContent(html_06f89c10acee173b977c0f95bdc8872f);
+            
+        
+
+        circle_marker_a13a20e197c88a98f7e4a968a856d52e.bindPopup(popup_ba5b16ef84f7d3583b544a57ee957cd5)
+        ;
+
+        
+    
+    
+            circle_marker_a13a20e197c88a98f7e4a968a856d52e.bindTooltip(
+                `<div>
+                     Berlin Hub - 10 stalls
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_8532a3ba99664be6ec6b6bcf49226545 = L.circleMarker(
+                [51.5074, -0.1278],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FFFF00", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 20.4, "stroke": true, "weight": 1}
+            ).addTo(map_b3fb3c883863f979ccd5c538b49938dc);
+        
+    
+        var popup_3d14cd44ca462b7c146bc4632a30cc23 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_9c8a3f3e4ff7935cefe809ef2227f783 = $(`<div id="html_9c8a3f3e4ff7935cefe809ef2227f783" style="width: 100.0%; height: 100.0%;">         <div style="width: 280px;">             <h4 style="color: #ffffff; margin-bottom: 8px;">London Hub</h4>             <table style="width: 100%; color: #ffffff; font-size: 12px;">                 <tr><td><b>Región:</b></td><td>Reino Unido</td></tr>                 <tr><td><b>Abierto:</b></td><td>June 2014</td></tr>                 <tr><td><b>Stalls de Carga:</b></td><td style="color: #00ff00;">12</td></tr>                 <tr><td><b>Potencia por Stall:</b></td><td>150 kW</td></tr>                 <tr><td><b>Potencia Total:</b></td><td style="color: #ffff00;">1,800 kW</td></tr>                 <tr><td><b>Fase de Red:</b></td><td>Fase de Expansión</td></tr>             </table>         </div>         </div>`)[0];
+                popup_3d14cd44ca462b7c146bc4632a30cc23.setContent(html_9c8a3f3e4ff7935cefe809ef2227f783);
+            
+        
+
+        circle_marker_8532a3ba99664be6ec6b6bcf49226545.bindPopup(popup_3d14cd44ca462b7c146bc4632a30cc23)
+        ;
+
+        
+    
+    
+            circle_marker_8532a3ba99664be6ec6b6bcf49226545.bindTooltip(
+                `<div>
+                     London Hub - 12 stalls
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_5b4c8d6aa88aacd40920212b679bccc2 = L.circleMarker(
+                [48.8566, 2.3522],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FFFF00", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 22.8, "stroke": true, "weight": 1}
+            ).addTo(map_b3fb3c883863f979ccd5c538b49938dc);
+        
+    
+        var popup_d303a5b74b155bcb2f5deb5bc0364f70 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_b7b083ea563c3274ede6bd7fc96ff3af = $(`<div id="html_b7b083ea563c3274ede6bd7fc96ff3af" style="width: 100.0%; height: 100.0%;">         <div style="width: 280px;">             <h4 style="color: #ffffff; margin-bottom: 8px;">Paris Hub</h4>             <table style="width: 100%; color: #ffffff; font-size: 12px;">                 <tr><td><b>Región:</b></td><td>Europa Oeste</td></tr>                 <tr><td><b>Abierto:</b></td><td>August 2014</td></tr>                 <tr><td><b>Stalls de Carga:</b></td><td style="color: #00ff00;">14</td></tr>                 <tr><td><b>Potencia por Stall:</b></td><td>150 kW</td></tr>                 <tr><td><b>Potencia Total:</b></td><td style="color: #ffff00;">2,100 kW</td></tr>                 <tr><td><b>Fase de Red:</b></td><td>Fase de Expansión</td></tr>             </table>         </div>         </div>`)[0];
+                popup_d303a5b74b155bcb2f5deb5bc0364f70.setContent(html_b7b083ea563c3274ede6bd7fc96ff3af);
+            
+        
+
+        circle_marker_5b4c8d6aa88aacd40920212b679bccc2.bindPopup(popup_d303a5b74b155bcb2f5deb5bc0364f70)
+        ;
+
+        
+    
+    
+            circle_marker_5b4c8d6aa88aacd40920212b679bccc2.bindTooltip(
+                `<div>
+                     Paris Hub - 14 stalls
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_71114bb4035ec003899ffb44a7adc2e4 = L.circleMarker(
+                [39.9042, 116.4074],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FFFF00", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 18.0, "stroke": true, "weight": 1}
+            ).addTo(map_b3fb3c883863f979ccd5c538b49938dc);
+        
+    
+        var popup_55c39fb11cae89716b60ab352b79e5a0 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_95fc64b4b36e45d3e76488a7150c5d3a = $(`<div id="html_95fc64b4b36e45d3e76488a7150c5d3a" style="width: 100.0%; height: 100.0%;">         <div style="width: 280px;">             <h4 style="color: #ffffff; margin-bottom: 8px;">Beijing Supercharger</h4>             <table style="width: 100%; color: #ffffff; font-size: 12px;">                 <tr><td><b>Región:</b></td><td>China</td></tr>                 <tr><td><b>Abierto:</b></td><td>July 2014</td></tr>                 <tr><td><b>Stalls de Carga:</b></td><td style="color: #00ff00;">10</td></tr>                 <tr><td><b>Potencia por Stall:</b></td><td>120 kW</td></tr>                 <tr><td><b>Potencia Total:</b></td><td style="color: #ffff00;">1,200 kW</td></tr>                 <tr><td><b>Fase de Red:</b></td><td>Fase de Expansión</td></tr>             </table>         </div>         </div>`)[0];
+                popup_55c39fb11cae89716b60ab352b79e5a0.setContent(html_95fc64b4b36e45d3e76488a7150c5d3a);
+            
+        
+
+        circle_marker_71114bb4035ec003899ffb44a7adc2e4.bindPopup(popup_55c39fb11cae89716b60ab352b79e5a0)
+        ;
+
+        
+    
+    
+            circle_marker_71114bb4035ec003899ffb44a7adc2e4.bindTooltip(
+                `<div>
+                     Beijing Supercharger - 10 stalls
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_d61c8c734088d1dbea19891b7d0a7e65 = L.circleMarker(
+                [31.2304, 121.4737],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FFFF00", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 25.2, "stroke": true, "weight": 1}
+            ).addTo(map_b3fb3c883863f979ccd5c538b49938dc);
+        
+    
+        var popup_5b0df69653b863708798988a414c747a = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_954b07bd84f04e6afcc9de5be9a023c7 = $(`<div id="html_954b07bd84f04e6afcc9de5be9a023c7" style="width: 100.0%; height: 100.0%;">         <div style="width: 280px;">             <h4 style="color: #ffffff; margin-bottom: 8px;">Shanghai Hub</h4>             <table style="width: 100%; color: #ffffff; font-size: 12px;">                 <tr><td><b>Región:</b></td><td>China</td></tr>                 <tr><td><b>Abierto:</b></td><td>August 2014</td></tr>                 <tr><td><b>Stalls de Carga:</b></td><td style="color: #00ff00;">16</td></tr>                 <tr><td><b>Potencia por Stall:</b></td><td>180 kW</td></tr>                 <tr><td><b>Potencia Total:</b></td><td style="color: #ffff00;">2,880 kW</td></tr>                 <tr><td><b>Fase de Red:</b></td><td>Fase de Expansión</td></tr>             </table>         </div>         </div>`)[0];
+                popup_5b0df69653b863708798988a414c747a.setContent(html_954b07bd84f04e6afcc9de5be9a023c7);
+            
+        
+
+        circle_marker_d61c8c734088d1dbea19891b7d0a7e65.bindPopup(popup_5b0df69653b863708798988a414c747a)
+        ;
+
+        
+    
+    
+            circle_marker_d61c8c734088d1dbea19891b7d0a7e65.bindTooltip(
+                `<div>
+                     Shanghai Hub - 16 stalls
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_178af7771b36e0c97e7bba0556c90a41 = L.circleMarker(
+                [22.3193, 114.1694],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FFFF00", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 20.4, "stroke": true, "weight": 1}
+            ).addTo(map_b3fb3c883863f979ccd5c538b49938dc);
+        
+    
+        var popup_68f0620ad3499819fcfca62628c412f2 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_edf36ce60831b8e231b63af8b926bd27 = $(`<div id="html_edf36ce60831b8e231b63af8b926bd27" style="width: 100.0%; height: 100.0%;">         <div style="width: 280px;">             <h4 style="color: #ffffff; margin-bottom: 8px;">Shenzhen Hub</h4>             <table style="width: 100%; color: #ffffff; font-size: 12px;">                 <tr><td><b>Región:</b></td><td>China</td></tr>                 <tr><td><b>Abierto:</b></td><td>December 2014</td></tr>                 <tr><td><b>Stalls de Carga:</b></td><td style="color: #00ff00;">12</td></tr>                 <tr><td><b>Potencia por Stall:</b></td><td>150 kW</td></tr>                 <tr><td><b>Potencia Total:</b></td><td style="color: #ffff00;">1,800 kW</td></tr>                 <tr><td><b>Fase de Red:</b></td><td>Fase de Expansión</td></tr>             </table>         </div>         </div>`)[0];
+                popup_68f0620ad3499819fcfca62628c412f2.setContent(html_edf36ce60831b8e231b63af8b926bd27);
+            
+        
+
+        circle_marker_178af7771b36e0c97e7bba0556c90a41.bindPopup(popup_68f0620ad3499819fcfca62628c412f2)
+        ;
+
+        
+    
+    
+            circle_marker_178af7771b36e0c97e7bba0556c90a41.bindTooltip(
+                `<div>
+                     Shenzhen Hub - 12 stalls
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_f58ae802a047468a4c8b89825f3a4302 = L.circleMarker(
+                [35.6762, 139.6503],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FFFF00", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15.6, "stroke": true, "weight": 1}
+            ).addTo(map_b3fb3c883863f979ccd5c538b49938dc);
+        
+    
+        var popup_0b5d3485a624f74002b9c431ea05f3d0 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_3fb55fe5931081d98fff5d3ac83621dd = $(`<div id="html_3fb55fe5931081d98fff5d3ac83621dd" style="width: 100.0%; height: 100.0%;">         <div style="width: 280px;">             <h4 style="color: #ffffff; margin-bottom: 8px;">Tokyo Hub</h4>             <table style="width: 100%; color: #ffffff; font-size: 12px;">                 <tr><td><b>Región:</b></td><td>Japón</td></tr>                 <tr><td><b>Abierto:</b></td><td>September 2014</td></tr>                 <tr><td><b>Stalls de Carga:</b></td><td style="color: #00ff00;">8</td></tr>                 <tr><td><b>Potencia por Stall:</b></td><td>150 kW</td></tr>                 <tr><td><b>Potencia Total:</b></td><td style="color: #ffff00;">1,200 kW</td></tr>                 <tr><td><b>Fase de Red:</b></td><td>Fase de Expansión</td></tr>             </table>         </div>         </div>`)[0];
+                popup_0b5d3485a624f74002b9c431ea05f3d0.setContent(html_3fb55fe5931081d98fff5d3ac83621dd);
+            
+        
+
+        circle_marker_f58ae802a047468a4c8b89825f3a4302.bindPopup(popup_0b5d3485a624f74002b9c431ea05f3d0)
+        ;
+
+        
+    
+    
+            circle_marker_f58ae802a047468a4c8b89825f3a4302.bindTooltip(
+                `<div>
+                     Tokyo Hub - 8 stalls
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_ec2c1c079543162d4de8bc9e262b8fbd = L.circleMarker(
+                [37.5665, 126.978],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#00FF80", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 13.2, "stroke": true, "weight": 1}
+            ).addTo(map_b3fb3c883863f979ccd5c538b49938dc);
+        
+    
+        var popup_a4e1ab3230e97b928c2c309906840175 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_b6514c45d2aaaaee95bc2d9d8c1c2426 = $(`<div id="html_b6514c45d2aaaaee95bc2d9d8c1c2426" style="width: 100.0%; height: 100.0%;">         <div style="width: 280px;">             <h4 style="color: #ffffff; margin-bottom: 8px;">Seoul Hub</h4>             <table style="width: 100%; color: #ffffff; font-size: 12px;">                 <tr><td><b>Región:</b></td><td>Corea del Sur</td></tr>                 <tr><td><b>Abierto:</b></td><td>February 2017</td></tr>                 <tr><td><b>Stalls de Carga:</b></td><td style="color: #00ff00;">6</td></tr>                 <tr><td><b>Potencia por Stall:</b></td><td>120 kW</td></tr>                 <tr><td><b>Potencia Total:</b></td><td style="color: #ffff00;">720 kW</td></tr>                 <tr><td><b>Fase de Red:</b></td><td>Fase de Expansión</td></tr>             </table>         </div>         </div>`)[0];
+                popup_a4e1ab3230e97b928c2c309906840175.setContent(html_b6514c45d2aaaaee95bc2d9d8c1c2426);
+            
+        
+
+        circle_marker_ec2c1c079543162d4de8bc9e262b8fbd.bindPopup(popup_a4e1ab3230e97b928c2c309906840175)
+        ;
+
+        
+    
+    
+            circle_marker_ec2c1c079543162d4de8bc9e262b8fbd.bindTooltip(
+                `<div>
+                     Seoul Hub - 6 stalls
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_50f380e9d57942eeda543c0c4284e0d4 = L.circleMarker(
+                [36.0, -120.0],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FF8000", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15.6, "stroke": true, "weight": 1}
+            ).addTo(map_b3fb3c883863f979ccd5c538b49938dc);
+        
+    
+        var popup_7361aa88f909ea31a623f0668751eb7f = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_e2d6059dd03af2455ad0874c70704145 = $(`<div id="html_e2d6059dd03af2455ad0874c70704145" style="width: 100.0%; height: 100.0%;">         <div style="width: 280px;">             <h4 style="color: #ffffff; margin-bottom: 8px;">Corredor I-5 (California)</h4>             <table style="width: 100%; color: #ffffff; font-size: 12px;">                 <tr><td><b>Región:</b></td><td>Red de Carreteras</td></tr>                 <tr><td><b>Abierto:</b></td><td>January 2013</td></tr>                 <tr><td><b>Stalls de Carga:</b></td><td style="color: #00ff00;">8</td></tr>                 <tr><td><b>Potencia por Stall:</b></td><td>120 kW</td></tr>                 <tr><td><b>Potencia Total:</b></td><td style="color: #ffff00;">960 kW</td></tr>                 <tr><td><b>Fase de Red:</b></td><td>Red Temprana</td></tr>             </table>         </div>         </div>`)[0];
+                popup_7361aa88f909ea31a623f0668751eb7f.setContent(html_e2d6059dd03af2455ad0874c70704145);
+            
+        
+
+        circle_marker_50f380e9d57942eeda543c0c4284e0d4.bindPopup(popup_7361aa88f909ea31a623f0668751eb7f)
+        ;
+
+        
+    
+    
+            circle_marker_50f380e9d57942eeda543c0c4284e0d4.bindTooltip(
+                `<div>
+                     Corredor I-5 (California) - 8 stalls
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_6736cf574d4f1e14098a37fbcd975aa6 = L.circleMarker(
+                [39.0, -76.0],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FF8000", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 13.2, "stroke": true, "weight": 1}
+            ).addTo(map_b3fb3c883863f979ccd5c538b49938dc);
+        
+    
+        var popup_ce6ad7e7645da5b3abeedc46e6ae5b89 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_a08129c4744d109869b9ad0064a0693d = $(`<div id="html_a08129c4744d109869b9ad0064a0693d" style="width: 100.0%; height: 100.0%;">         <div style="width: 280px;">             <h4 style="color: #ffffff; margin-bottom: 8px;">Corredor Costa Este I-95</h4>             <table style="width: 100%; color: #ffffff; font-size: 12px;">                 <tr><td><b>Región:</b></td><td>Red de Carreteras</td></tr>                 <tr><td><b>Abierto:</b></td><td>May 2013</td></tr>                 <tr><td><b>Stalls de Carga:</b></td><td style="color: #00ff00;">6</td></tr>                 <tr><td><b>Potencia por Stall:</b></td><td>120 kW</td></tr>                 <tr><td><b>Potencia Total:</b></td><td style="color: #ffff00;">720 kW</td></tr>                 <tr><td><b>Fase de Red:</b></td><td>Red Temprana</td></tr>             </table>         </div>         </div>`)[0];
+                popup_ce6ad7e7645da5b3abeedc46e6ae5b89.setContent(html_a08129c4744d109869b9ad0064a0693d);
+            
+        
+
+        circle_marker_6736cf574d4f1e14098a37fbcd975aa6.bindPopup(popup_ce6ad7e7645da5b3abeedc46e6ae5b89)
+        ;
+
+        
+    
+    
+            circle_marker_6736cf574d4f1e14098a37fbcd975aa6.bindTooltip(
+                `<div>
+                     Corredor Costa Este I-95 - 6 stalls
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_e6b339ace8b92bbed38120602c1589b1 = L.circleMarker(
+                [50.0, 8.0],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FFFF00", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.8, "stroke": true, "weight": 1}
+            ).addTo(map_b3fb3c883863f979ccd5c538b49938dc);
+        
+    
+        var popup_49728a1c4168fd6e17862dc9bba2685e = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_7e830861c646e979985cb9a0849a6213 = $(`<div id="html_7e830861c646e979985cb9a0849a6213" style="width: 100.0%; height: 100.0%;">         <div style="width: 280px;">             <h4 style="color: #ffffff; margin-bottom: 8px;">Red Trans-Europea</h4>             <table style="width: 100%; color: #ffffff; font-size: 12px;">                 <tr><td><b>Región:</b></td><td>Red de Carreteras</td></tr>                 <tr><td><b>Abierto:</b></td><td>January 2014</td></tr>                 <tr><td><b>Stalls de Carga:</b></td><td style="color: #00ff00;">4</td></tr>                 <tr><td><b>Potencia por Stall:</b></td><td>100 kW</td></tr>                 <tr><td><b>Potencia Total:</b></td><td style="color: #ffff00;">400 kW</td></tr>                 <tr><td><b>Fase de Red:</b></td><td>Fase de Expansión</td></tr>             </table>         </div>         </div>`)[0];
+                popup_49728a1c4168fd6e17862dc9bba2685e.setContent(html_7e830861c646e979985cb9a0849a6213);
+            
+        
+
+        circle_marker_e6b339ace8b92bbed38120602c1589b1.bindPopup(popup_49728a1c4168fd6e17862dc9bba2685e)
+        ;
+
+        
+    
+    
+            circle_marker_e6b339ace8b92bbed38120602c1589b1.bindTooltip(
+                `<div>
+                     Red Trans-Europea - 4 stalls
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_7345410ff85d0e6e37bc422c142bee43 = L.circleMarker(
+                [19.076, 72.8777],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#8000FF", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.8, "stroke": true, "weight": 1}
+            ).addTo(map_b3fb3c883863f979ccd5c538b49938dc);
+        
+    
+        var popup_566f65411ad1c2301e7c6be45ad6bc3b = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_f6cacc8aa27314c0a85aaf2c1fdaa995 = $(`<div id="html_f6cacc8aa27314c0a85aaf2c1fdaa995" style="width: 100.0%; height: 100.0%;">         <div style="width: 280px;">             <h4 style="color: #ffffff; margin-bottom: 8px;">Mumbai Hub</h4>             <table style="width: 100%; color: #ffffff; font-size: 12px;">                 <tr><td><b>Región:</b></td><td>India</td></tr>                 <tr><td><b>Abierto:</b></td><td>January 2021</td></tr>                 <tr><td><b>Stalls de Carga:</b></td><td style="color: #00ff00;">4</td></tr>                 <tr><td><b>Potencia por Stall:</b></td><td>120 kW</td></tr>                 <tr><td><b>Potencia Total:</b></td><td style="color: #ffff00;">480 kW</td></tr>                 <tr><td><b>Fase de Red:</b></td><td>Fase de Expansión</td></tr>             </table>         </div>         </div>`)[0];
+                popup_566f65411ad1c2301e7c6be45ad6bc3b.setContent(html_f6cacc8aa27314c0a85aaf2c1fdaa995);
+            
+        
+
+        circle_marker_7345410ff85d0e6e37bc422c142bee43.bindPopup(popup_566f65411ad1c2301e7c6be45ad6bc3b)
+        ;
+
+        
+    
+    
+            circle_marker_7345410ff85d0e6e37bc422c142bee43.bindTooltip(
+                `<div>
+                     Mumbai Hub - 4 stalls
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_72e17a5a99de604cb7c16b6bfdf4afcf = L.circleMarker(
+                [-33.8688, 151.2093],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#0000FF", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15.6, "stroke": true, "weight": 1}
+            ).addTo(map_b3fb3c883863f979ccd5c538b49938dc);
+        
+    
+        var popup_7a512c51afb10f01d4a4a6f7f2f35573 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_55f75d1d2fa4c67b01ae427d7b505b66 = $(`<div id="html_55f75d1d2fa4c67b01ae427d7b505b66" style="width: 100.0%; height: 100.0%;">         <div style="width: 280px;">             <h4 style="color: #ffffff; margin-bottom: 8px;">Sydney Hub</h4>             <table style="width: 100%; color: #ffffff; font-size: 12px;">                 <tr><td><b>Región:</b></td><td>Australia</td></tr>                 <tr><td><b>Abierto:</b></td><td>August 2020</td></tr>                 <tr><td><b>Stalls de Carga:</b></td><td style="color: #00ff00;">8</td></tr>                 <tr><td><b>Potencia por Stall:</b></td><td>150 kW</td></tr>                 <tr><td><b>Potencia Total:</b></td><td style="color: #ffff00;">1,200 kW</td></tr>                 <tr><td><b>Fase de Red:</b></td><td>Fase de Expansión</td></tr>             </table>         </div>         </div>`)[0];
+                popup_7a512c51afb10f01d4a4a6f7f2f35573.setContent(html_55f75d1d2fa4c67b01ae427d7b505b66);
+            
+        
+
+        circle_marker_72e17a5a99de604cb7c16b6bfdf4afcf.bindPopup(popup_7a512c51afb10f01d4a4a6f7f2f35573)
+        ;
+
+        
+    
+    
+            circle_marker_72e17a5a99de604cb7c16b6bfdf4afcf.bindTooltip(
+                `<div>
+                     Sydney Hub - 8 stalls
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_23e6ad09e5d96df57d3b7549d65887b4 = L.circleMarker(
+                [-37.8136, 144.9631],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#0000FF", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 13.2, "stroke": true, "weight": 1}
+            ).addTo(map_b3fb3c883863f979ccd5c538b49938dc);
+        
+    
+        var popup_8de6256a8c6265315eb04519f23fb01d = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_8b8dcb2e7150974e15962fc126b5b9a4 = $(`<div id="html_8b8dcb2e7150974e15962fc126b5b9a4" style="width: 100.0%; height: 100.0%;">         <div style="width: 280px;">             <h4 style="color: #ffffff; margin-bottom: 8px;">Melbourne Hub</h4>             <table style="width: 100%; color: #ffffff; font-size: 12px;">                 <tr><td><b>Región:</b></td><td>Australia</td></tr>                 <tr><td><b>Abierto:</b></td><td>December 2020</td></tr>                 <tr><td><b>Stalls de Carga:</b></td><td style="color: #00ff00;">6</td></tr>                 <tr><td><b>Potencia por Stall:</b></td><td>150 kW</td></tr>                 <tr><td><b>Potencia Total:</b></td><td style="color: #ffff00;">900 kW</td></tr>                 <tr><td><b>Fase de Red:</b></td><td>Fase de Expansión</td></tr>             </table>         </div>         </div>`)[0];
+                popup_8de6256a8c6265315eb04519f23fb01d.setContent(html_8b8dcb2e7150974e15962fc126b5b9a4);
+            
+        
+
+        circle_marker_23e6ad09e5d96df57d3b7549d65887b4.bindPopup(popup_8de6256a8c6265315eb04519f23fb01d)
+        ;
+
+        
+    
+    
+            circle_marker_23e6ad09e5d96df57d3b7549d65887b4.bindTooltip(
+                `<div>
+                     Melbourne Hub - 6 stalls
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_a71a7a91259dba115c4a807cc72a7c49 = L.polyline(
+                [[47.6062, -122.3321], [37.7749, -122.4194], [34.0522, -118.2437]],
+                {"bubblingMouseEvents": true, "color": "cyan", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "cyan", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_b3fb3c883863f979ccd5c538b49938dc);
+        
+    
+        var popup_207df43321248b44defbef3b261e5447 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_435bd9c12b1039dc562ec5938d3bf427 = $(`<div id="html_435bd9c12b1039dc562ec5938d3bf427" style="width: 100.0%; height: 100.0%;">Corredor Costa Oeste EEUU</div>`)[0];
+                popup_207df43321248b44defbef3b261e5447.setContent(html_435bd9c12b1039dc562ec5938d3bf427);
+            
+        
+
+        poly_line_a71a7a91259dba115c4a807cc72a7c49.bindPopup(popup_207df43321248b44defbef3b261e5447)
+        ;
+
+        
+    
+    
+            var poly_line_3cdd0535c19697c0ca219116e09c658c = L.polyline(
+                [[40.7128, -74.006], [39.0, -76.0], [25.7617, -80.1918]],
+                {"bubblingMouseEvents": true, "color": "cyan", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "cyan", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_b3fb3c883863f979ccd5c538b49938dc);
+        
+    
+        var popup_8c63b6f065cd75ae07f2a03711594807 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_786403ce7ae37b57d8de446e7dccf55c = $(`<div id="html_786403ce7ae37b57d8de446e7dccf55c" style="width: 100.0%; height: 100.0%;">Corredor Costa Este EEUU</div>`)[0];
+                popup_8c63b6f065cd75ae07f2a03711594807.setContent(html_786403ce7ae37b57d8de446e7dccf55c);
+            
+        
+
+        poly_line_3cdd0535c19697c0ca219116e09c658c.bindPopup(popup_8c63b6f065cd75ae07f2a03711594807)
+        ;
+
+        
+    
+    
+            var poly_line_4ea51c4715285705709f8c8423b2089c = L.polyline(
+                [[59.9139, 10.7522], [52.3676, 4.9041], [52.52, 13.405], [48.8566, 2.3522]],
+                {"bubblingMouseEvents": true, "color": "lime", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "lime", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_b3fb3c883863f979ccd5c538b49938dc);
+        
+    
+        var popup_2f38928538c1af548e420e6fafc96738 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_73a5578c11fa94343d9a53ee6e1bf393 = $(`<div id="html_73a5578c11fa94343d9a53ee6e1bf393" style="width: 100.0%; height: 100.0%;">Red Supercharger Europea</div>`)[0];
+                popup_2f38928538c1af548e420e6fafc96738.setContent(html_73a5578c11fa94343d9a53ee6e1bf393);
+            
+        
+
+        poly_line_4ea51c4715285705709f8c8423b2089c.bindPopup(popup_2f38928538c1af548e420e6fafc96738)
+        ;
+
+        
+    
+    
+            var poly_line_9f9352d7f75d842f82d6c469f0137fbf = L.polyline(
+                [[39.9042, 116.4074], [31.2304, 121.4737], [22.3193, 114.1694]],
+                {"bubblingMouseEvents": true, "color": "yellow", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "yellow", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_b3fb3c883863f979ccd5c538b49938dc);
+        
+    
+        var popup_2fe1b65b71d832ebc0e70a434eb12152 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_ba8d62e6f2143e1681d89d127f322eea = $(`<div id="html_ba8d62e6f2143e1681d89d127f322eea" style="width: 100.0%; height: 100.0%;">Red Supercharger China</div>`)[0];
+                popup_2fe1b65b71d832ebc0e70a434eb12152.setContent(html_ba8d62e6f2143e1681d89d127f322eea);
+            
+        
+
+        poly_line_9f9352d7f75d842f82d6c469f0137fbf.bindPopup(popup_2fe1b65b71d832ebc0e70a434eb12152)
+        ;
+
+        
+    
+</script>
+</html>

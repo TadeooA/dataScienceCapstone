@@ -1,0 +1,39 @@
+{
+  "analysis_date": "2025-08-13T02:48:56.776527",
+  "data_period": "2020-01-03 to 2023-12-29",
+  "total_trading_days": 1005,
+  "years_analyzed": 3.9863107460643397,
+  "price_performance": {
+    "total_return_pct": 741.3353842680358,
+    "min_price": 24.08133316040039,
+    "max_price": 409.9700012207031,
+    "current_price": 248.47999572753906,
+    "price_range": 385.88866806030273
+  },
+  "volume_analysis": {
+    "avg_daily_volume": 133216673.43283582,
+    "max_volume": 914082000.0,
+    "min_volume": 29401800.0,
+    "median_volume": 107065100.0
+  },
+  "volatility_metrics": {
+    "daily_volatility_pct": 4.290171134195141,
+    "annualized_volatility_pct": 68.10435541792954,
+    "avg_daily_return_pct": 0.30697434984918515,
+    "positive_days_pct": 53.73134328358209,
+    "max_daily_gain_pct": 19.8948593763949,
+    "max_daily_loss_pct": -21.062824320390796,
+    "skewness": 0.07453910022357761,
+    "kurtosis": 2.8600126012211367
+  },
+  "seasonal_patterns": {
+    "best_month": 1,
+    "worst_month": 12,
+    "best_month_return": 1.072830422664423,
+    "worst_month_return": -0.26335653790476776,
+    "best_day_of_week": 0,
+    "worst_day_of_week": 3,
+    "best_day_return": 1.1331492480506802,
+    "worst_day_return": -0.11781855951380177
+  }
+}
